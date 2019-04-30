@@ -8,7 +8,7 @@ module.exports = () => {
       current = exec('mpg321 /home/pi/song-1.mp3 -a bluealsa');
     },
     stop: () => {
-      current.exit(0);
+      current.kill();
     }
   };
 };
