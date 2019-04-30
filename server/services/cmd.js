@@ -9,8 +9,8 @@ module.exports = () => {
       console.log('current:', current);
     },
     stop: () => {
-      console.log('stop current:', current);
-      current.emit('exit', 1);
+      console.log(`kill ${current.pid}`);
+      exec(`kill ${current.pid}`);
     }
   };
 };
