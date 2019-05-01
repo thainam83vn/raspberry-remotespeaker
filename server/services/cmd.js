@@ -1,7 +1,9 @@
 var sys = require('sys');
 var exec = require('child_process').exec;
 var mpg321 = require('mpg321');
-const player = mpg321({ audiodevice: 'bluealsa' }).remote();
+const player = mpg321()
+  .audiodevice('bluealsa')
+  .remote();
 
 module.exports = () => {
   let current;
