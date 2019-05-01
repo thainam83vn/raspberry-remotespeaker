@@ -1,5 +1,6 @@
 const express = require('express');
-const player = require('./../services/cmd')();
+const player = require('./../services/music')();
+const espeak = require('./../services/espeak')();
 module.exports = () => {
   const route = express.Router();
 
@@ -14,6 +15,10 @@ module.exports = () => {
   route.post('/stop', (req, res) => {
     console.log(`stop playing`);
     player.stop();
+    res.json({ message: '200' });
+  });
+  route.post('/speak', (req, res) => {
+    espeak.talk(req.body.text);
     res.json({ message: '200' });
   });
   return route;
