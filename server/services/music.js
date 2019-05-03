@@ -9,9 +9,9 @@ const MUSIC_FOLDER = '/home/pi/musics';
 module.exports = () => {
   let current;
   return {
-    play: url => {
+    play: song => {
       // current = exec('mpg321 /home/pi/song-1.mp3 -a bluealsa');
-      player.play(`${MUSIC_FOLDER}/${req.body.song}.mp3`);
+      player.play(`${MUSIC_FOLDER}/${song}.mp3`);
       console.log('current:', current);
     },
     stop: () => {

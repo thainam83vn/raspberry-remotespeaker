@@ -8,7 +8,7 @@ module.exports = () => {
     res.json({ message: '200' });
   });
   route.post('/play', (req, res) => {
-    console.log(`playing ${req.body.url}`);
+    console.log(`playing ${req.body.song}`);
     player.play();
     res.json({ message: '200' });
   });
