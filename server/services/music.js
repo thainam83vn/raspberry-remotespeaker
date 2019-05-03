@@ -10,7 +10,7 @@ module.exports = () => {
   return {
     play: url => {
       // current = exec('mpg321 /home/pi/song-1.mp3 -a bluealsa');
-      player.play('/home/pi/song-1.mp3');
+      player.play('/home/pi/*.mp3');
       console.log('current:', current);
     },
     stop: () => {
