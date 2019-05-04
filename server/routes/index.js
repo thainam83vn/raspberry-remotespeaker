@@ -9,7 +9,7 @@ module.exports = () => {
   });
   route.post('/play', (req, res) => {
     console.log(`playing ${req.body.song}`);
-    player.play();
+    player.play(req.body.song);
     res.json({ message: '200' });
   });
   route.post('/stop', (req, res) => {
