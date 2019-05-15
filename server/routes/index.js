@@ -1,6 +1,7 @@
 const express = require('express');
 const player = require('./../services/music')();
 const espeak = require('./../services/espeak')();
+const youtube = require('./../services/youtube')();
 module.exports = () => {
   const route = express.Router();
 
@@ -19,6 +20,10 @@ module.exports = () => {
   });
   route.post('/speak', (req, res) => {
     espeak.talk(req.body.text);
+    res.json({ message: '200' });
+  });
+  route.post('/youtube', (req, res) => {
+    youtube.play(req.body.vid);
     res.json({ message: '200' });
   });
   return route;
