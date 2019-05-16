@@ -22,8 +22,9 @@ module.exports = () => {
     espeak.talk(req.body.text);
     res.json({ message: '200' });
   });
-  route.post('/youtube', (req, res) => {
-    youtube.play(req.body.vid);
+  route.get('/youtube', (req, res) => {
+    // youtube.play(req.body.vid);
+    youtube.play('Oc6HSonlwJ8');
     res.json({ message: '200' });
   });
   return route;
