@@ -5,7 +5,8 @@ module.exports = () => {
   return {
     play: vid => {
       console.log('Playing Youtube vid=' + vid);
-      vid = vid || 'WwOY1o16T4s';
+      // vid = vid || 'WwOY1o16T4s';
+      vid = 'cPAbx5kgCJo';
       exec('killall omxplayer.bin');
       exec(
         `omxplayer -o hdmi "\`youtube-dl -g -f mp4 https://youtube.com?v=${vid}\`"`
