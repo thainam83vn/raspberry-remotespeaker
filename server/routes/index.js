@@ -2,7 +2,7 @@ const express = require('express');
 const player = require('./../services/music')();
 const espeak = require('./../services/espeak')();
 const youtube = require('./../services/youtube')();
-const storage = require('./../services/storage')();
+const storage = require('./../services/local-storage')();
 
 module.exports = () => {
   const route = express.Router();
