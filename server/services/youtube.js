@@ -17,11 +17,11 @@ module.exports = () => {
       return songs;
     },
     play: async vid => {
-      let songs = (await axios(
-        'https://s3.amazonaws.com/thainamtran-alexa/youtube_songs.txt'
-      )).data.split('\n');
-      songs = songs.map(s => s.replace('\r', ''));
-      vid = songs[getRandomInt(songs.length) % songs.length];
+      // let songs = (await axios(
+      //   'https://s3.amazonaws.com/thainamtran-alexa/youtube_songs.txt'
+      // )).data.split('\n');
+      // songs = songs.map(s => s.replace('\r', ''));
+      // vid = songs[getRandomInt(songs.length) % songs.length];
       console.log('youtube kill all');
       exec('killall omxplayer.bin');
       console.log(`youtube playing ${vid}`);
