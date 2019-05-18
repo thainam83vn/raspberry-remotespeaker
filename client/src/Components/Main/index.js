@@ -6,15 +6,20 @@ const API_URL = 'http://localhost:9090/api';
 
 export default class Main extends Component {
   state = {};
-  componentDidMount() {
+  updateNow() {
     axios(`${API_URL}/now`)
       .then(res => {
         console.log('@debug-call-now', { data: res.data });
         this.setState({ data: res.data });
+        setTimeout(this.updateNow, 1);
       })
       .catch(ex => {
         console.log('error:', ex);
+        setTimeout(this.updateNow, 1);
       });
+  }
+  componentDidMount() {
+    this.updateNow();
   }
   render() {
     const { data } = this.state;

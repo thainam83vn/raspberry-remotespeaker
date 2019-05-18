@@ -10,6 +10,7 @@ export default props => {
           {song.index}.{song.name}
         </h3>
       ))}
+      <h1>Please say "Play number #"</h1>
     </div>
   );
 };

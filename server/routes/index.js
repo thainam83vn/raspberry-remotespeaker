@@ -47,6 +47,9 @@ module.exports = () => {
       storage.writeNow({ action: 'Play', song });
 
       youtube.play(song.vid);
+      setTimeout(() => {
+        storage.writeNow({ action: 'None' });
+      }, 60);
     } else {
       console.log(`Song ${number} not found`);
     }
