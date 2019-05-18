@@ -23,7 +23,6 @@ module.exports = () => {
     res.json({ message: '200' });
   });
   route.get('/stop-youtube', (req, res) => {
-    // youtube.play(req.body.vid);
     youtube.stop();
     res.json({ message: '200' });
   });
@@ -31,13 +30,6 @@ module.exports = () => {
     const songs = await youtube.list();
     console.log('Show Youtube song list:', songs);
     res.json({ songs });
-    // res.json({
-    //   songs: [
-    //     { index: 1, name: 'Let it go' },
-    //     { index: 2, name: `How far I'll go` },
-    //     { index: 3, name: 'Shake it off' }
-    //   ]
-    // });
   });
   route.get('/youtube/playsong/:number', async (req, res) => {
     const { number } = req.params;
@@ -54,10 +46,5 @@ module.exports = () => {
 
     res.json(song);
   });
-  // route.get('/youtube', (req, res) => {
-  //   // youtube.play(req.body.vid);
-  //   youtube.play('Oc6HSonlwJ8');
-  //   res.json({ message: '200' });
-  // });
   return route;
 };
