@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Commands from '../Commands';
 
 const API_URL = 'http://localhost:9090/api';
 
@@ -13,7 +14,12 @@ export default class Main extends Component {
     const { data } = this.state;
     console.log('@debug', { data });
     if (data) {
-      return <div>{data}</div>;
+      const Action = Commands[data.action];
+      return (
+        <div>
+          <Action {...data} />
+        </div>
+      );
     }
     return (
       <div>

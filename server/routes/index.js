@@ -32,7 +32,7 @@ module.exports = () => {
   route.get('/youtube/list', async (req, res) => {
     const songs = await youtube.list();
     console.log('Show Youtube song list:', songs);
-    storage.writeNow({ action: 'list', songs });
+    storage.writeNow({ action: 'List', songs });
     res.json({ songs });
   });
 
@@ -44,7 +44,7 @@ module.exports = () => {
 
     if (song) {
       console.log(`Playing song:`, song);
-      storage.writeNow({ action: 'play', song });
+      storage.writeNow({ action: 'Play', song });
 
       youtube.play(song.vid);
     } else {
