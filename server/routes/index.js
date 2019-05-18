@@ -42,7 +42,7 @@ module.exports = () => {
   route.get('/youtube/playsong/:number', async (req, res) => {
     const { number } = req.params;
     const songs = await youtube.list();
-    const song = songs.filter(({ vid, name, index }) => index == number);
+    const song = songs.filter(({ vid, name, index }) => index == number)[0];
     console.log('Song list:', { songs, number, song });
 
     if (song) {
