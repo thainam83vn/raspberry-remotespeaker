@@ -53,6 +53,8 @@ module.exports = () => {
 
     route.get('/now', async (req, res) => {
       const data = storage.readNow();
+      console.log(`Now:`, data);
+
       res.json(data);
     });
 
