@@ -27,10 +27,37 @@ module.exports = () => {
     youtube.stop();
     res.json({ message: '200' });
   });
-  route.get('/youtube', (req, res) => {
-    // youtube.play(req.body.vid);
-    youtube.play('Oc6HSonlwJ8');
-    res.json({ message: '200' });
+  route.get('/youtube/list', async (req, res) => {
+    const songs = await youtube.list();
+    console.log('Show Youtube song list:', songs);
+    res.json({ songs });
+    // res.json({
+    //   songs: [
+    //     { index: 1, name: 'Let it go' },
+    //     { index: 2, name: `How far I'll go` },
+    //     { index: 3, name: 'Shake it off' }
+    //   ]
+    // });
   });
+  route.get('/youtube/playsong/:number', async (req, res) => {
+    const { number } = req.params;
+    const songs = await youtube.list();
+    const song = songs.filter(({ vid, name, index }) => index == number);
+    console.log('Song list:', { songs, number, song });
+
+    if (song) {
+      console.log(`Playing song:`, song);
+      youtube.play(song.vid);
+    } else {
+      console.log(`Song ${number} not found`);
+    }
+
+    res.json(song);
+  });
+  // route.get('/youtube', (req, res) => {
+  //   // youtube.play(req.body.vid);
+  //   youtube.play('Oc6HSonlwJ8');
+  //   res.json({ message: '200' });
+  // });
   return route;
 };
