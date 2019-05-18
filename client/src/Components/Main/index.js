@@ -8,6 +8,7 @@ export default class Main extends Component {
   state = {};
   async componentDidMount() {
     const data = (await axios(`${API_URL}/now`)).data;
+    console.log('@debug-call-now', { data });
     this.setState({ data });
   }
   render() {
