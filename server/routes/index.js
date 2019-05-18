@@ -51,14 +51,14 @@ module.exports = () => {
       console.log(`Song ${number} not found`);
     }
 
-    route.get('/now', async (req, res) => {
-      const data = storage.readNow();
-      console.log(`Now:`, data);
-
-      res.json(data);
-    });
-
     res.json(song);
+  });
+
+  route.get('/now', async (req, res) => {
+    const data = storage.readNow();
+    console.log(`Now:`, data);
+
+    res.json(data);
   });
 
   return route;

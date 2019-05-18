@@ -15,6 +15,10 @@ export default class Main extends Component {
     if (data) {
       return <div>{data}</div>;
     }
-    return <div />;
+    return (
+      <div>
+        <h1>Waiting Your Commands...</h1>
+      </div>
+    );
   }
 }
