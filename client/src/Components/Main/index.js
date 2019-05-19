@@ -18,7 +18,7 @@ export default class Main extends Component {
   }
   componentDidMount() {
     this.updateNow();
-    this.interval = setInterval(() => this.updateNow(), 1000);
+    this.interval = setInterval(() => this.updateNow(), 250);
   }
   render() {
     const { data } = this.state;
