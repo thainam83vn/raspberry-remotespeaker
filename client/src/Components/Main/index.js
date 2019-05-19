@@ -11,15 +11,14 @@ export default class Main extends Component {
       .then(res => {
         console.log('@debug-call-now', { data: res.data });
         this.setState({ data: res.data });
-        setTimeout(this.updateNow, 1);
       })
       .catch(ex => {
         console.log('error:', ex);
-        setTimeout(this.updateNow, 1);
       });
   }
   componentDidMount() {
     this.updateNow();
+    this.interval = setInterval(() => this.updateNow(), 1000);
   }
   render() {
     const { data } = this.state;
