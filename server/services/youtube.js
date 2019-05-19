@@ -16,18 +16,23 @@ module.exports = () => {
       songs = songs.map((song, index) => ({ ...song, index: index + 1 }));
       return songs;
     },
-    play: async vid => {
-      // let songs = (await axios(
-      //   'https://s3.amazonaws.com/thainamtran-alexa/youtube_songs.txt'
-      // )).data.split('\n');
-      // songs = songs.map(s => s.replace('\r', ''));
-      // vid = songs[getRandomInt(songs.length) % songs.length];
-      console.log('youtube kill all');
-      exec('killall omxplayer.bin');
-      console.log(`youtube playing ${vid}`);
-      exec(
-        `omxplayer -o hdmi "\`youtube-dl -g -f mp4 https://youtube.com?v=${vid}\`"`
-      );
+    play: vid => {
+      return new Promise((resolve, reject) => {
+        console.log('youtube kill all');
+        exec('killall omxplayer.bin');
+        console.log(`youtube playing ${vid}`);
+        exec(
+          `omxplayer -o hdmi "\`youtube-dl -g -f mp4 https://youtube.com?v=${vid}\`"`,
+          (error, stdout, stdin) => {
+            if (error) {
+              reject();
+            } else {
+              console.log('omxplayer-done');
+            }
+          }
+        );
+        resolve();
+      });
     },
     stop: () => {
       console.log('Stop Playing Youtube');
